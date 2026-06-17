@@ -1,6 +1,6 @@
 ---
 
-### 2. **`Dockerfile`** (ganti dengan ini)
+### **2. Dockerfile** (Sudah bagus, tapi ini versi paling baru)
 
 ```dockerfile
 FROM ubuntu:22.04
@@ -16,15 +16,14 @@ RUN apt-get update && apt-get install -y \
 # Install Hermes Agent
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-# Buat template .env
+# Template .env
 RUN mkdir -p ${HERMES_HOME} && \
     echo "# Hermes Agent Environment Variables" > ${HERMES_HOME}/.env && \
     echo "GROQ_API_KEY=your_groq_key_here" >> ${HERMES_HOME}/.env && \
-    echo "# Tambahkan lebih banyak key untuk rotation:" >> ${HERMES_HOME}/.env && \
+    echo "# Tambahkan key lain untuk rotation:" >> ${HERMES_HOME}/.env && \
     echo "# GROQ_API_KEY_2=sk-..." >> ${HERMES_HOME}/.env && \
     echo "# GROQ_API_KEY_3=sk-..." >> ${HERMES_HOME}/.env
 
 EXPOSE 8000
 
-# Start gateway (Railway & Docker akan override env vars)
 CMD ["hermes", "gateway"]
