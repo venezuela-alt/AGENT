@@ -11,4 +11,4 @@ Deployment template Hermes Agent dengan Fireworks.ai + Telegram.
 ## GitHub Actions
 Otomatis build Docker image saat push ke main.
 
-Made with github.com/yanzyaha
+Made with bijimeledak
