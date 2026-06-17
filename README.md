@@ -16,10 +16,27 @@
 1. **Fork** repo ini
 2. Buka [Railway.app](https://railway.app) → **New Project** → Deploy from GitHub
 3. Pilih repo ini
-4. Tambahkan Environment Variables berikut:
+4. Tambahkan Environment Variables:
 
 | Variable            | Required | Keterangan                          |
 |---------------------|----------|-------------------------------------|
+| `GROQ_API_KEY`      | Yes      | Groq API Key utama                  |
+| `GROQ_API_KEY_2`    | No       | Groq API Key kedua (rotation)       |
+| `GROQ_API_KEY_3`    | No       | Groq API Key ketiga                 |
+
+5. Deploy!
+
+## 🐳 Docker & docker-compose (Local)
+
+```bash
+# Clone dulu
+git clone https://github.com/venezuela-alt/AGENT.git
+cd AGENT
+
+cp .env.example .env
+# Isi GROQ_API_KEY di .env
+
+docker compose up -d|---------------------|----------|-------------------------------------|
 | `GROQ_API_KEY`      | Yes      | Groq API Key utama                  |
 | `GROQ_API_KEY_2`    | No       | Groq API Key kedua (rotation)       |
 | `GROQ_API_KEY_3`    | No       | Groq API Key ketiga                 |
