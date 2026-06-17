@@ -1,8 +1,14 @@
+[build]
+builder = "DOCKERFILE"
+
 [deploy]
 restartPolicyType = "always"
+healthcheckPath = "/health"
+healthcheckTimeout = 60
+
+[[volumes]]
+mountPath = "/opt/data"
 
 [variables]
-OPENAI_API_KEY = { required = true, description = "Fireworks API Key fw-..." }
-OPENAI_BASE_URL = { required = true, description = "https://api.fireworks.ai/inference/v1" }
-TELEGRAM_BOT_TOKEN = { required = true, description = "Telegram Bot Token" }
-TELEGRAM_ALLOWED_USERS = { required = true, description = "Telegram user ID yang diizinkan" }
+HERMES_HOME = { required = false, description = "Path data Hermes" }
+HERMES_DASHBOARD = { required = false, description = "Set 1 untuk enable WebUI dashboard" }
