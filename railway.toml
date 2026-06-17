@@ -3,11 +3,11 @@ startCommand = "hermes gateway"
 restartPolicyType = "always"
 
 [variables]
-GROQ_API_KEY   = { required = true,  description = "Groq API Key utama (wajib)" }
-GROQ_API_KEY_2 = { required = false, description = "Groq API Key ke-2 (opsional, untuk rotation)" }
-GROQ_API_KEY_3 = { required = false, description = "Groq API Key ke-3 (opsional, untuk rotation)" }
-
-FIREWORKS_API_KEY      = { required = false, description = "Fireworks AI API Key (opsional, untuk fallback)" }
-FIREWORKS_FALLBACK_MODEL = { required = false, description = "Model Fireworks yang dipakai saat Groq error (default: llama-v3p1-70b-instruct)" }
-
-TELEGRAM_BOT_TOKEN = { required = false, description = "Token bot Telegram (opsional)" }
+GROQ_API_KEY             = { required = true,  description = "Groq API Key utama (gsk_...)" }
+GROQ_API_KEY_2           = { required = false, description = "Groq key ke-2 untuk rotation" }
+GROQ_API_KEY_3           = { required = false, description = "Groq key ke-3 untuk rotation" }
+FIREWORKS_API_KEY        = { required = false, description = "Fireworks AI key (fw_...) untuk fallback" }
+FIREWORKS_FALLBACK_MODEL = { required = false, description = "Model Fireworks (default: llama-v3p1-70b-instruct)" }
+TELEGRAM_BOT_TOKEN       = { required = false, description = "Token bot Telegram" }
+TELEGRAM_ENABLED         = { required = false, description = "Set true untuk aktifkan Telegram" }
+GATEWAY_ALLOW_ALL_USERS  = { required = false, description = "Set true untuk izinkan semua user" }
