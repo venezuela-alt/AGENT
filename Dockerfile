@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 # Install Hermes Agent
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-# Pre-configure untuk Fireworks.ai
+# Pre-configure Fireworks.ai
 RUN mkdir -p ${HERMES_HOME} ${HERMES_HOME}/config && \
     echo "OPENAI_API_KEY=${OPENAI_API_KEY}" > ${HERMES_HOME}/.env && \
     echo "OPENAI_BASE_URL=${OPENAI_BASE_URL}" >> ${HERMES_HOME}/.env && \
