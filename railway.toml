@@ -5,6 +5,6 @@ restartPolicyType = "always"
 [variables]
 OPENAI_API_KEY = { required = true, description = "Fireworks API Key (fw-...)" }
 OPENAI_BASE_URL = { required = true, description = "https://api.fireworks.ai/inference/v1" }
-TELEGRAM_ENABLED = { required = false, description = "true atau false" }
+TELEGRAM_ENABLED = { required = false }
 TELEGRAM_BOT_TOKEN = { required = false }
 TELEGRAM_ALLOWED_USERS = { required = false }
