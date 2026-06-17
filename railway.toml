@@ -3,6 +3,4 @@ startCommand = "hermes gateway"
 restartPolicyType = "always"
 
 [variables]
-GROQ_API_KEY = { required = true, description = "Groq API Key utama" }
-GROQ_API_KEY_2 = { required = false, description = "Groq API Key kedua (rotation)" }
-GROQ_API_KEY_3 = { required = false, description = "Groq API Key ketiga" }
+GROQ_API_KEY = { required = true, description = "Masukkan Groq API Key lu" }
