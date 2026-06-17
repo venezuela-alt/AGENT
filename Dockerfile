@@ -1,14 +1,24 @@
 FROM ubuntu:22.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive \
+    PATH="/root/.hermes/bin:$PATH" \
+    HERMES_HOME=/root/.hermes
 
 RUN apt-get update && apt-get install -y \
-    curl bash nodejs npm python3 python3-pip \
+    curl bash ca-certificates git nodejs npm python3 python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Hermes Agent
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-ENV PATH="/root/.hermes/bin:$PATH"
+# Create .env template
+RUN mkdir -p ${HERMES_HOME} && \
+    echo "# Hermes Agent Environment Variables" > ${HERMES_HOME}/.env && \
+    echo "GROQ_API_KEY=your_groq_key_here" >> ${HERMES_HOME}/.env && \
+    echo "# Tambahkan key lain untuk rotation:" >> ${HERMES_HOME}/.env && \
+    echo "# GROQ_API_KEY_2=sk-..." >> ${HERMES_HOME}/.env
 
-CMD hermes config set model groq/llama-3.3-70b-versatile && hermes gateway
+EXPOSE 8000
+
+# Default command (akan di-override oleh Railway)
+CMD ["hermes", "gateway"]
