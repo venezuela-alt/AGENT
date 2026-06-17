@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  hermes-agent:
+  hermes:
     build: .
     container_name: hermes-agent
     ports:
@@ -14,4 +14,3 @@ services:
 
 volumes:
   hermes_data:
-    driver: local
