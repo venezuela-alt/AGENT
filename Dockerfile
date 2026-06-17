@@ -8,9 +8,10 @@ RUN apt-get update && apt-get install -y \
     curl bash ca-certificates git nodejs npm python3 python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Hermes
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-# Pre-configure Fireworks + Telegram
+# Force enable Telegram + Fireworks
 RUN mkdir -p ${HERMES_HOME} ${HERMES_HOME}/config && \
     echo "OPENAI_API_KEY=${OPENAI_API_KEY}" > ${HERMES_HOME}/.env && \
     echo "OPENAI_BASE_URL=${OPENAI_BASE_URL}" >> ${HERMES_HOME}/.env && \
