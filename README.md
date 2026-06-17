@@ -1,14 +1,14 @@
 # 🚀 Hermes Agent - Deployment Template (Fireworks.ai)
 
-Deployment template Hermes Agent dengan **Fireworks.ai** + Telegram support.
+Deployment template Hermes Agent dengan Fireworks.ai + Telegram.
 
-## Cara Deploy ke Railway
-1. Fork repo ini
-2. Deploy ke Railway.app
-3. Tambahkan Environment Variables sesuai `railway.toml`
+## Deploy ke Railway
+1. Fork repo
+2. Deploy ke Railway
+3. Isi Environment Variables
 4. Redeploy
 
-## Akses
-Buka URL yang diberikan oleh Railway.
+## GitHub Actions
+Otomatis build Docker image saat push ke main.
 
-**Official**: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+Made with github.com/yanzyaha
