@@ -11,4 +11,4 @@ RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
 ENV PATH="/root/.hermes/bin:$PATH"
 
-CMD ["hermes", "gateway"]
+CMD hermes config set model groq/llama-3.3-70b-versatile && hermes gateway
