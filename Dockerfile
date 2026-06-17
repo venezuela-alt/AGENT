@@ -11,35 +11,16 @@ RUN apt-get update && apt-get install -y \
 # Install Hermes
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-# Force enable Telegram + Fireworks
-RUN mkdir -p ${HERMES_HOME} ${HERMES_HOME}/config && \
-    echo "OPENAI_API_KEY=${OPENAI_API_KEY}" > ${HERMES_HOME}/.env && \
-    echo "OPENAI_BASE_URL=${OPENAI_BASE_URL}" >> ${HERMES_HOME}/.env && \
-    echo "TELEGRAM_ENABLED=true" >> ${HERMES_HOME}/.env && \
-    echo "TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}" >> ${HERMES_HOME}/.env && \
-    echo "TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}" >> ${HERMES_HOME}/.env && \
-    cat > ${HERMES_HOME}/config/config.yaml << 'EOF'
-model:
-  provider: openai
-  model: accounts/fireworks/models/llama-v3p3-70b-instruct
-  base_url: https://api.fireworks.ai/inference/v1
+# Buat direktori config
+RUN mkdir -p ${HERMES_HOME}/config
 
-gateway:
-  port: 8000
-  allow_all: true
-
-telegram:
-  enabled: true
-  bot_token: ${TELEGRAM_BOT_TOKEN}
-  allowed_users:
-    - ${TELEGRAM_ALLOWED_USERS}
-EOF
+# Entrypoint script yang generate config saat runtime (bukan build time)
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
   CMD curl -f http://localhost:8000/health || exit 1
 
-ENV TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-
-CMD ["hermes", "gateway"]
+CMD ["/entrypoint.sh"]
