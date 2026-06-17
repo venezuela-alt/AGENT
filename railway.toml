@@ -1,6 +1,0 @@
-[deploy]
-startCommand = "hermes gateway"
-restartPolicyType = "always"
-
-[variables]
-GROQ_API_KEY = { required = true, description = "Masukkan Groq API Key lu" }
