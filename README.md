@@ -82,6 +82,18 @@ Model Fireworks yang bisa dipakai: lihat di [fireworks.ai/models](https://firewo
 **Port 8000 sudah dipakai**  
 → Ganti port di `docker-compose.yml`: ubah `"8000:8000"` jadi misalnya `"8080:8000"`.
 
+## 🔥 Pakai Fireworks.ai (Rekomendasi saat ini)
+
+Karena Groq/OpenAI susah, pakai **Fireworks.ai**:
+
+1. Daftar di [app.fireworks.ai](https://app.fireworks.ai) → dapatkan API Key.
+2. Tambahkan `FIREWORKS_API_KEY` di Railway Variables.
+3. Redeploy.
+
+Model yang bagus di Fireworks:
+- `accounts/fireworks/models/llama-v3p3-70b-instruct`
+- `accounts/fireworks/models/deepseek-r1`
+
 ---
 
 ## 📁 Struktur File
