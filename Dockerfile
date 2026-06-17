@@ -10,10 +10,11 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
+# Pre-configure Fireworks + Telegram
 RUN mkdir -p ${HERMES_HOME} ${HERMES_HOME}/config && \
     echo "OPENAI_API_KEY=${OPENAI_API_KEY}" > ${HERMES_HOME}/.env && \
     echo "OPENAI_BASE_URL=${OPENAI_BASE_URL}" >> ${HERMES_HOME}/.env && \
-    echo "TELEGRAM_ENABLED=${TELEGRAM_ENABLED}" >> ${HERMES_HOME}/.env && \
+    echo "TELEGRAM_ENABLED=true" >> ${HERMES_HOME}/.env && \
     echo "TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}" >> ${HERMES_HOME}/.env && \
     echo "TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}" >> ${HERMES_HOME}/.env && \
     cat > ${HERMES_HOME}/config/config.yaml << 'EOF'
@@ -25,6 +26,12 @@ model:
 gateway:
   port: 8000
   allow_all: true
+
+telegram:
+  enabled: true
+  bot_token: ${TELEGRAM_BOT_TOKEN}
+  allowed_users:
+    - ${TELEGRAM_ALLOWED_USERS}
 EOF
 
 EXPOSE 8000
