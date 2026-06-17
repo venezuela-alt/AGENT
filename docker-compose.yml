@@ -1,33 +1,22 @@
-version: "3.9"
+version: '3.8'
 
 services:
   hermes:
     build: .
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      # Primary Groq key (required)
-      - GROQ_API_KEY=${GROQ_API_KEY}
-      # Extra Groq keys for rotation (optional)
-      - GROQ_API_KEY_2=${GROQ_API_KEY_2:-}
-      - GROQ_API_KEY_3=${GROQ_API_KEY_3:-}
-      # Fireworks AI fallback (optional)
-      - FIREWORKS_API_KEY=${FIREWORKS_API_KEY:-}
-      - FIREWORKS_FALLBACK_MODEL=${FIREWORKS_FALLBACK_MODEL:-accounts/fireworks/models/llama-v3p1-70b-instruct}
-      # Telegram bot token (optional)
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+    container_name: hermes-agent
     ports:
       - "8000:8000"
+    env_file:
+      - .env
+    restart: unless-stopped
     volumes:
-      # Persistent memory & config across restarts
       - hermes_data:/root/.hermes
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 20s
+      start_period: 60s
 
 volumes:
   hermes_data:
