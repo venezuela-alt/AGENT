@@ -10,11 +10,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-RUN mkdir -p /root/.hermes/config && \
-    echo 'model:' > /root/.hermes/config/config.yaml && \
-    echo '  provider: custom' >> /root/.hermes/config/config.yaml && \
-    echo '  default: ${HERMES_MODEL:-llama-3.3-70b-versatile}' >> /root/.hermes/config/config.yaml
-
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
