@@ -2,15 +2,18 @@ version: '3.8'
 
 services:
   hermes:
-    build: .
+    image: nousresearch/hermes-agent:latest
     container_name: hermes-agent
     ports:
       - "8000:8000"
     env_file:
       - .env
+    environment:
+      - HERMES_HOME=/opt/data
+      - HERMES_DASHBOARD=1
     restart: unless-stopped
     volumes:
-      - hermes_data:/root/.hermes
+      - hermes_data:/opt/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
