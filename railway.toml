@@ -10,5 +10,10 @@ healthcheckTimeout = 60
 mountPath = "/opt/data"
 
 [variables]
-HERMES_HOME = { required = false, description = "Path data Hermes" }
-HERMES_DASHBOARD = { required = false, description = "Set 1 untuk enable WebUI dashboard" }
+HERMES_HOME = { required = false, description = "Data path" }
+HERMES_DASHBOARD = { required = false, description = "Set 1 untuk WebUI" }
+OPENAI_API_KEY = { required = true, description = "Fireworks key (fw-...) atau 9router key" }
+OPENAI_BASE_URL = { required = true, description = "https://api.fireworks.ai/inference/v1 atau http://9router-url/v1" }
+HERMES_MODEL = { required = true, description = "accounts/fireworks/models/llama-v3p3-70b-instruct" }
+TELEGRAM_BOT_TOKEN = { required = true, description = "Token bot Telegram" }
+TELEGRAM_ALLOWED_USERS = { required = false, description = "User ID Telegram, kosong = semua boleh" }
