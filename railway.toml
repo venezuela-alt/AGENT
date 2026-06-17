@@ -1,9 +1,8 @@
 [deploy]
-startCommand = "hermes gateway"
 restartPolicyType = "always"
 
 [variables]
 OPENAI_API_KEY = { required = true, description = "Fireworks API Key fw-..." }
 OPENAI_BASE_URL = { required = true, description = "https://api.fireworks.ai/inference/v1" }
 TELEGRAM_BOT_TOKEN = { required = true, description = "Telegram Bot Token" }
-TELEGRAM_ALLOWED_USERS = { required = true, description = "User ID Telegram lu" }
+TELEGRAM_ALLOWED_USERS = { required = true, description = "Telegram user ID yang diizinkan" }
