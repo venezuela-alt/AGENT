@@ -11,28 +11,31 @@ RUN apt-get update && apt-get install -y \
 # Install Hermes Agent
 RUN curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
-# Pre-configure Fireworks.ai
+# Pre-configure Fireworks.ai (menggunakan variabel Railway lu)
 RUN mkdir -p ${HERMES_HOME} ${HERMES_HOME}/config && \
-    # .env
-    echo "FIREWORKS_API_KEY=${FIREWORKS_API_KEY}" > ${HERMES_HOME}/.env && \
-    echo "GROQ_API_KEY=${GROQ_API_KEY}" >> ${HERMES_HOME}/.env && \
-    echo "GROQ_API_KEY_2=${GROQ_API_KEY_2}" >> ${HERMES_HOME}/.env && \
-    # config.yaml - Force Fireworks (OpenAI compatible)
+    echo "OPENAI_API_KEY=${OPENAI_API_KEY}" > ${HERMES_HOME}/.env && \
+    echo "OPENAI_BASE_URL=${OPENAI_BASE_URL}" >> ${HERMES_HOME}/.env && \
+    echo "TELEGRAM_ENABLED=${TELEGRAM_ENABLED}" >> ${HERMES_HOME}/.env && \
+    echo "TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}" >> ${HERMES_HOME}/.env && \
+    echo "TELEGRAM_ALLOWED_USERS=${TELEGRAM_ALLOWED_USERS}" >> ${HERMES_HOME}/.env && \
     cat > ${HERMES_HOME}/config/config.yaml << 'EOF'
 model:
-  provider: fireworks
+  provider: openai
   model: accounts/fireworks/models/llama-v3p3-70b-instruct
   base_url: https://api.fireworks.ai/inference/v1
 
-# Fallback kalau perlu
-fallback_chain:
-  - provider: fireworks
-    model: accounts/fireworks/models/deepseek-r1
-
 gateway:
   port: 8000
+  allow_all: true
+
+telegram:
+  enabled: true
 EOF
 
 EXPOSE 8000
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:8000/health || exit 1
 
 CMD ["hermes", "gateway"]
