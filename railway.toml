@@ -1,3 +1,12 @@
 [deploy]
 startCommand = "hermes gateway"
 restartPolicyType = "always"
+
+# Environment variables yang bakal diminta di Railway
+[variables]
+GROQ_API_KEY = { required = true, description = "Groq API Key utama" }
+GROQ_API_KEY_2 = { required = false, description = "Groq API Key kedua (untuk rotation)" }
+GROQ_API_KEY_3 = { required = false, description = "Groq API Key ketiga" }
+
+# Optional lain
+# OPENROUTER_API_KEY = { required = false }
