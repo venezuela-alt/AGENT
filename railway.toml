@@ -15,7 +15,7 @@ HERMES_HOME = { required = false, description = "Data path, default /opt/data" }
 OPENAI_API_KEY = { required = true, description = "tokenrouter.com (sk_...) dari tokenrouter.com" }
 OPENAI_API_KEYS = { required = true, description = "tokenrouter.com (sk_...) dari tokenrouter.com" }
 OPENAI_BASE_URL = { required = true, description = "https://api.tokenrouter.com/v1" }
-HERMES_MODEL = { required = true, description = "https://api.tokenrouter.com/v1/chat/completions" }
+HERMES_MODEL = { required = true, description = "https://www.tokenrouter.com/models" }
 
 # --- Telegram ---
 TELEGRAM_BOT_TOKEN = { required = true, description = "Token dari @BotFather" }
