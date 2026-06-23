@@ -12,10 +12,10 @@ mountPath = "/opt/data"
 HERMES_HOME = { required = false, description = "Data path, default /opt/data" }
 
 # --- Fireworks AI ---
-OPENAI_API_KEY = { required = true, description = "agentrouter.org (sk_...) dari agentrouter.org" }
-OPENAI_API_KEYS = { required = true, description = "agentrouter.org (sk_...) dari agentrouter.org" }
-OPENAI_BASE_URL = { required = true, description = "https://agentrouter.org/v1" }
-HERMES_MODEL = { required = true, description = "openai-chat-completions" }
+OPENAI_API_KEY = { required = true, description = "zenmux.ai (sk_...) dari zenmux.ai" }
+OPENAI_API_KEYS = { required = true, description = "zenmux.ai (sk_...) dari zenmux.ai" }
+OPENAI_BASE_URL = { required = true, description = "https://zenmux.ai/api/v1" }
+HERMES_MODEL = { required = true, description = "stepfun/step-3.7-flash-free" }
 
 # --- Telegram ---
 TELEGRAM_BOT_TOKEN = { required = true, description = "Token dari @BotFather" }
