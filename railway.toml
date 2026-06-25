@@ -12,10 +12,10 @@ mountPath = "/opt/data"
 HERMES_HOME = { required = false, description = "Data path, default /opt/data" }
 
 # --- Fireworks AI ---
-OPENAI_API_KEY = { required = true, description = "aistudio.xiaomimimo.com (tp-...) dari aistudio.xiaomimimo.com " }
-OPENAI_API_KEYS = { required = true, description = "aistudio.xiaomimimo.com (tp-...) dari aistudio.xiaomimimo.com" }
-OPENAI_BASE_URL = { required = true, description = "https://token-plan-sgp.xiaomimimo.com/v1" }
-HERMES_MODEL = { required = true, description = "btl-deepseek" }
+OPENAI_API_KEY = { required = true, description = "badtheorylabs.com (tp-...) dari badtheorylabs.com " }
+OPENAI_API_KEYS = { required = true, description = "badtheorylabs.com (tp-...) dari badtheorylabs.com" }
+OPENAI_BASE_URL = { required = true, description = "https://api.badtheorylabs.com/v1" }
+HERMES_MODEL = { required = true, description = "deepseek-v4-pro" }
 
 # --- Telegram ---
 TELEGRAM_BOT_TOKEN = { required = true, description = "Token dari @BotFather" }
