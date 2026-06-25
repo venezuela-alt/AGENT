@@ -15,7 +15,7 @@ HERMES_HOME = { required = false, description = "Data path, default /opt/data" }
 OPENAI_API_KEY = { required = true, description = "aistudio.xiaomimimo.com (tp-...) dari aistudio.xiaomimimo.com " }
 OPENAI_API_KEYS = { required = true, description = "aistudio.xiaomimimo.com (tp-...) dari aistudio.xiaomimimo.com" }
 OPENAI_BASE_URL = { required = true, description = "https://token-plan-sgp.xiaomimimo.com/v1" }
-HERMES_MODEL = { required = true, description = "mimo" }
+HERMES_MODEL = { required = true, description = "btl-deepseek" }
 
 # --- Telegram ---
 TELEGRAM_BOT_TOKEN = { required = true, description = "Token dari @BotFather" }
